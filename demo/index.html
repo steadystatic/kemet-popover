@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Kemet Popover</title>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      margin: 0;
+      line-height: 1.5;
+      background: #fafafa;
+    }
+
+    #demo {
+      margin: auto;
+      padding: 2rem;
+      max-width: 640px;
+    }
+
+    kemet-popover {
+      --kemet-popover-gap: 1rem;
+      --kemet-popover-width: 320px;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../kemet-popover.js';
+
+    render(
+      html`
+        <h1>Bacon Ipsum</h1>
+        <p>Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.</p>
+        <p>Ham hock kevin shank shankle. Flank ball tip pork loin boudin ham hock turkey meatloaf alcatra. Hamburger beef flank pork corned beef beef ribs buffalo brisket ribeye. Corned beef turducken sausage chicken andouille biltong ham pancetta jowl meatball pastrami meatloaf ground round pork belly spare ribs.</p>
+        <p>
+          <kemet-popover fire-on-click effect="fade-in-scale-up" position="right">
+            <strong slot="trigger"><a href="#">Activate Popover:</a></strong>
+            <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
+          </kemet-popover>
+          Pancetta jowl tri-tip, meatball flank pork loin ham. Drumstick brisket frankfurter, sausage kevin hamburger prosciutto landjaeger tail porchetta spare ribs bresaola. Alcatra hamburger capicola biltong, rump ribeye tenderloin beef ribs flank jowl leberkas. Spare ribs capicola kevin, landjaeger hamburger alcatra meatball pancetta rump. Meatloaf beef pork belly jowl filet mignon.
+        </p>
+        <p>Ham hock sausage jowl, hamburger beef ribs rump salami ribeye. T-bone pork chop jowl, landjaeger salami brisket short loin chislic corned beef pork loin pork boudin. Jerky buffalo ball tip bacon salami brisket pork chop chuck jowl prosciutto chicken turkey tongue pork loin. Pork bacon hamburger ham hock doner pastrami sirloin salami shank turducken jerky. Pork loin meatball shank alcatra rump strip steak capicola cupim meatloaf porchetta ball tip jowl chislic turducken tenderloin. Filet mignon landjaeger turducken pig, rump short ribs capicola flank pork short loin shankle kielbasa ground round pastrami jerky.</p>
+        <p>Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.</p>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
