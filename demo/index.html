@@ -24,6 +24,11 @@
       --kemet-popover-gap: 1rem;
       --kemet-popover-width: 320px;
     }
+
+    kemet-popover strong {
+      color: rgb(0,125,193);
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -35,17 +40,19 @@
     import '../kemet-popover.js';
 
     const properties = {
-      position: 'top'
+      position: 'top',
+      effect: 'fade-in-scale-up',
+      fireOnClick: true,
+      fireOnHover: false,
     };
 
     const demoElement = document.getElementById('demo');
 
     const demoUI = (props) => html`
       <h1>Bacon Ipsum</h1>
-      <p>Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.</p>
       <div>
         <label>
-          Position:
+          <strong>Position:</strong>
           <select @blur=${(event) => handlePosition(event)}>
             <option value="top" selected>Top</option>
             <option value="right">Right</option>
@@ -53,13 +60,25 @@
             <option value="left">Left</option>
           </select>
         </label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <strong>Fire On:</strong>&nbsp;
+        <label>
+          <input type="radio" name="fire-on" value="click" @change=${(event) => handleFireOn(event)} checked />Click
+        </label>
+        <label>
+          <input type="radio" name="fire-on" value="hover" @change=${(event) => handleFireOn(event)}  />Hover
+        </label>
       </div>
       <p>
-        <kemet-popover fire-on-click effect="fade-in-scale-up" .position="${props.position}">
-          <strong slot="trigger"><a href="#">Activate Popover:</a></strong>
+        <kemet-popover
+          ?fire-on-hover=${props.fireOnHover}
+          ?fire-on-click=${props.fireOnClick}
+          .effect="${props.effect}"
+          .position="${props.position}">
+          <strong slot="trigger">Activate Popover:</strong>
           <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
         </kemet-popover>
-        Pancetta jowl tri-tip, meatball flank pork loin ham. Drumstick brisket frankfurter, sausage kevin hamburger prosciutto landjaeger tail porchetta spare ribs bresaola. Alcatra hamburger capicola biltong, rump ribeye tenderloin beef ribs flank jowl leberkas. Spare ribs capicola kevin, landjaeger hamburger alcatra meatball pancetta rump. Meatloaf beef pork belly jowl filet mignon.
+        Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.
       </p>
       <p>Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.</p>
     `;
@@ -69,6 +88,16 @@
     const handlePosition = (event) => {
       properties.position = event.target.value;
       render(demoUI(properties), demoElement);
+    }
+
+    const handleFireOn = (event) => {
+      if (event.target.value === 'hover') {
+        properties.fireOnHover = true;
+      } else {
+        properties.fireOnClick = true;
+      }
+
+      render(demoUI(properties), demoElement)
     }
   </script>
 </body>

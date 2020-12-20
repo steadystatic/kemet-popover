@@ -85,6 +85,10 @@ export class KemetPopover extends LitElement {
       fireOnClick: {
         type: Boolean,
         attribute: 'fire-on-click'
+      },
+      fireOnHover: {
+        type: Boolean,
+        attribute: 'fire-on-hover'
       }
     }
   }
@@ -92,8 +96,14 @@ export class KemetPopover extends LitElement {
   constructor() {
     super();
 
+    // managed properties
     this.opened = false;
     this.position = 'top';
+
+    // standard properties
+    this.keyCodes = {
+      ENTER: 13
+    }
   }
 
   render() {
@@ -101,12 +111,17 @@ export class KemetPopover extends LitElement {
       <div
         id="trigger"
         part="trigger"
-        @click=${this.fireOnClick ? (event) => this.toggle(event) : null}
-        @keyup=${() => console.log('keyup')}>
+        tabIndex="0"
+        @click=${this.fireOnClick ? () => this.toggle() : null}
+        @keyup=${this.fireOnClick ? (event) => this.handleKeyUp(event) : null}
+        @mouseover=${this.fireOnHover ? () => this.open() : null}
+        @focus=${this.fireOnHover ? () => this.open() : null}
+        @mouseout=${this.fireOnHover ? () => this.close() : null}
+        @blur=${this.fireOnHover ? () => this.close() : null}>
         <slot name="trigger"></slot>
-      </div>
-      <div id="content" part="content">
-        <slot name="content"></slot>
+        <div id="content" part="content">
+          <slot name="content"></slot>
+        </div>
       </div>
     `;
   }
@@ -136,6 +151,14 @@ export class KemetPopover extends LitElement {
       this.close();
     } else {
       this.open();
+    }
+  }
+
+  handleKeyUp(event) {
+    event.preventDefault();
+
+    if (event.keyCode === this.keyCodes.ENTER) {
+      this.toggle();
     }
   }
 }
