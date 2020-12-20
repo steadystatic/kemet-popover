@@ -30,24 +30,46 @@
   <div id="demo"></div>
 
   <script type="module">
+    /* eslint-disable no-use-before-define */
     import { html, render } from 'lit-html';
     import '../kemet-popover.js';
 
-    render(
-      html`
-        <h1>Bacon Ipsum</h1>
-        <p>Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.</p>
-        <p>
-          <kemet-popover fire-on-click effect="fade-in-scale-up" position="left">
-            <strong slot="trigger"><a href="#">Activate Popover:</a></strong>
-            <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
-          </kemet-popover>
-          Pancetta jowl tri-tip, meatball flank pork loin ham. Drumstick brisket frankfurter, sausage kevin hamburger prosciutto landjaeger tail porchetta spare ribs bresaola. Alcatra hamburger capicola biltong, rump ribeye tenderloin beef ribs flank jowl leberkas. Spare ribs capicola kevin, landjaeger hamburger alcatra meatball pancetta rump. Meatloaf beef pork belly jowl filet mignon.
-        </p>
-        <p>Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.</p>
-      `,
-      document.querySelector('#demo')
-    );
+    const properties = {
+      position: 'top'
+    };
+
+    const demoElement = document.getElementById('demo');
+
+    const demoUI = (props) => html`
+      <h1>Bacon Ipsum</h1>
+      <p>Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.</p>
+      <div>
+        <label>
+          Position:
+          <select @blur=${(event) => handlePosition(event)}>
+            <option value="top" selected>Top</option>
+            <option value="right">Right</option>
+            <option value="bottom">Bottom</option>
+            <option value="left">Left</option>
+          </select>
+        </label>
+      </div>
+      <p>
+        <kemet-popover fire-on-click effect="fade-in-scale-up" .position="${props.position}">
+          <strong slot="trigger"><a href="#">Activate Popover:</a></strong>
+          <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
+        </kemet-popover>
+        Pancetta jowl tri-tip, meatball flank pork loin ham. Drumstick brisket frankfurter, sausage kevin hamburger prosciutto landjaeger tail porchetta spare ribs bresaola. Alcatra hamburger capicola biltong, rump ribeye tenderloin beef ribs flank jowl leberkas. Spare ribs capicola kevin, landjaeger hamburger alcatra meatball pancetta rump. Meatloaf beef pork belly jowl filet mignon.
+      </p>
+      <p>Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.</p>
+    `;
+
+    render(demoUI(properties), demoElement);
+
+    const handlePosition = (event) => {
+      properties.position = event.target.value;
+      render(demoUI(properties), demoElement);
+    }
   </script>
 </body>
 </html>
