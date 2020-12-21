@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit-element';
-import { fadeInScaleUp } from './stylesEffect.js';
+import { customTooltip } from './styles.tooltip.js';
+import { fadeInScaleUp } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
   static get styles() {
@@ -32,12 +33,12 @@ export class KemetPopover extends LitElement {
         }
 
         ::slotted([slot="content"]) {
+          color: var(--kemet-popover-color, #fafafa);
           display: block;
           width: 100%;
           padding: 1rem;
           box-sizing: border-box;
-          background: #fafafa;
-          border: 1px solid rgba(36,49,56,1);
+          background-color: var(--kemet-popover-bgcolor, rgba(36,49,56,1));
         }
 
         :host([position="top"]) #content {
@@ -64,6 +65,7 @@ export class KemetPopover extends LitElement {
           transform: translateY(-50%);
         }
       `,
+      customTooltip,
       fadeInScaleUp
     ];
   }
@@ -81,6 +83,10 @@ export class KemetPopover extends LitElement {
       position: {
         type: String,
         reflect: true
+      },
+      customTooltip: {
+        type: Boolean,
+        attribute: 'custom-tooltip'
       },
       fireOnClick: {
         type: Boolean,
@@ -121,6 +127,7 @@ export class KemetPopover extends LitElement {
         <slot name="trigger"></slot>
         <div id="content" part="content">
           <slot name="content"></slot>
+          ${this.makeTooltip()}
         </div>
       </div>
     `;
@@ -160,5 +167,17 @@ export class KemetPopover extends LitElement {
     if (event.keyCode === this.keyCodes.ENTER) {
       this.toggle();
     }
+  }
+
+  makeTooltip() {
+    if (this.customTooltip) {
+      return html`
+        <div id="custom-tooltip" part="custom-tooltip">
+          <slot name="custom-tooltip"></slot>
+        </div>
+      `;
+    }
+
+    return null;
   }
 }

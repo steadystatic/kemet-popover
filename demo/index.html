@@ -21,13 +21,51 @@
     }
 
     kemet-popover {
-      --kemet-popover-gap: 1rem;
       --kemet-popover-width: 320px;
     }
 
+    a,
     kemet-popover strong {
+      letter-spacing: 1px;
       color: rgb(0,125,193);
       text-transform: uppercase;
+    }
+
+    /* note: you are responsible for transforming the position and rotation of your custom tooltip */
+    .custom {
+      --kemet-popover-gap: 1rem;
+    }
+
+    .custom [slot="content"] {
+      color: rgba(36,49,56,1);
+      background-color: #fafafa;
+      border: 3px solid rgba(36,49,56,1);
+    }
+
+    .custom[position="top"] svg,
+    .custom[position="bottom"] svg,
+    .custom[position="left"] svg,
+    .custom[position="right"] svg {
+      position: relative;
+    }
+
+    .custom[position="top"] svg {
+      top: -3px;
+    }
+
+    .custom[position="right"] svg {
+      right: -10px;
+      transform: rotate(90deg);
+    }
+
+    .custom[position="bottom"] svg {
+      top: 3px;
+      transform: rotate(180deg);
+    }
+
+    .custom[position="left"] svg {
+      transform: rotate(270deg);
+      right: 10px;
     }
   </style>
 </head>
@@ -49,10 +87,9 @@
     const demoElement = document.getElementById('demo');
 
     const demoUI = (props) => html`
-      <h1>Bacon Ipsum</h1>
-      <div>
+      <p>
         <label>
-          <strong>Position:</strong>
+          <strong>Position:</strong>&nbsp;&nbsp;
           <select @blur=${(event) => handlePosition(event)}>
             <option value="top" selected>Top</option>
             <option value="right">Right</option>
@@ -60,7 +97,8 @@
             <option value="left">Left</option>
           </select>
         </label>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+      <p>
         <strong>Fire On:</strong>&nbsp;
         <label>
           <input type="radio" name="fire-on" value="click" @change=${(event) => handleFireOn(event)} checked />Click
@@ -68,19 +106,38 @@
         <label>
           <input type="radio" name="fire-on" value="hover" @change=${(event) => handleFireOn(event)}  />Hover
         </label>
-      </div>
+      </p>
+      <hr />
+      <h1>Bacon Ipsum</h1>
       <p>
         <kemet-popover
           ?fire-on-hover=${props.fireOnHover}
           ?fire-on-click=${props.fireOnClick}
           .effect="${props.effect}"
           .position="${props.position}">
-          <strong slot="trigger">Activate Popover:</strong>
+          <strong slot="trigger">Activate Popover</strong>:
           <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
         </kemet-popover>
         Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.
       </p>
-      <p>Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.</p>
+      <p>
+        <kemet-popover
+          class="custom"
+          custom-tooltip
+          ?fire-on-hover=${props.fireOnHover}
+          ?fire-on-click=${props.fireOnClick}
+          .effect="${props.effect}"
+          .position="${props.position}">
+          <strong slot="trigger">Activate Custom Tooltip</strong>:
+          <span slot="content">This is a custom tooltip. Here's a <a href="http://kemet.online/popover" target="_blank">random link</a> to help test it out.</span>
+          <span slot="custom-tooltip">
+            <svg width="32" height="18" viewBox="0 0 1366.99 767.67">
+              <polyline points="0.74 0.67 685.25 766.17 1366.24 0.67" style="fill:#fafafa; stroke:rgba(36,49,56,1); stroke-width:100px"/>
+            </svg>
+          </span>
+        </kemet-popover>
+        Ground round meatball landjaeger biltong doner tail fatback kevin drumstick. Tongue capicola tenderloin pork pork belly chuck rump doner ham meatball brisket. Ball tip chuck pork, tri-tip shoulder short ribs cupim shankle cow venison pork belly. Chuck doner bacon porchetta filet mignon, turducken brisket pork belly tenderloin salami. Frankfurter tri-tip kevin meatball bresaola. Shank buffalo cupim venison flank, porchetta tail swine burgdoggen spare ribs. Meatball ground round tri-tip swine pig, alcatra turkey chicken jowl jerky shoulder capicola spare ribs.
+      </p>
     `;
 
     render(demoUI(properties), demoElement);
