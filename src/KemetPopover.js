@@ -4,7 +4,9 @@ import {
   fadeIn,
   fadeInScaleUp,
   fadeInSlide,
-  fall
+  fall,
+  flipHorizontal,
+  flipVertical,
 } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
@@ -76,6 +78,8 @@ export class KemetPopover extends LitElement {
       fadeInScaleUp,
       fadeInSlide,
       fall,
+      flipHorizontal,
+      flipVertical,
     ];
   }
 

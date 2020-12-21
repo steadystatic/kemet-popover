@@ -133,3 +133,100 @@ export const fall = css`
     transform: translateY(-50%) translateZ(0px) rotateX(0deg);
   }
 `;
+
+export const flipHorizontal = css`
+  :host([effect="flip-horizontal"]) {
+    perspective: 1300px;
+  }
+
+  :host([effect="flip-horizontal"]) #content {
+    transform-style: preserve-3d;
+    transition: all var(--kemet-popover-transition-speed, 0.3s);
+    opacity: 0;
+  }
+
+  :host([effect="flip-horizontal"][opened]) #content {
+    opacity: 1;
+  }
+
+  :host([effect="flip-horizontal"][position="top"]) #content {
+    transform: translateX(-50%) rotateY(-70deg);
+  }
+
+  :host([effect="flip-horizontal"][position="top"][opened]) #content {
+    transform: translateX(-50%) rotateY(0deg);
+  }
+
+  :host([effect="flip-horizontal"][position="bottom"]) #content {
+    transform: translateX(-50%) rotateY(-70deg);
+  }
+
+  :host([effect="flip-horizontal"][position="bottom"][opened]) #content {
+    transform: translateX(-50%) rotateY(0deg);
+  }
+
+  :host([effect="flip-horizontal"][position="right"]) #content {
+    transform: translateY(-50%) rotateY(-70deg);
+  }
+
+  :host([effect="flip-horizontal"][position="right"][opened]) #content {
+    transform: translateY(-50%) rotateY(0deg);
+  }
+
+  :host([effect="flip-horizontal"][position="left"]) #content {
+    transform: translateY(-50%) rotateY(-70deg);
+  }
+
+  :host([effect="flip-horizontal"][position="left"][opened]) #content {
+    transform: translateY(-50%) rotateY(0deg);
+  }
+`;
+
+
+export const flipVertical = css`
+  :host([effect="flip-vertical"]) {
+    perspective: 1300px;
+  }
+
+  :host([effect="flip-vertical"]) #content {
+    transform-style: preserve-3d;
+    transition: all var(--kemet-popover-transition-speed, 0.3s);
+    opacity: 0;
+  }
+
+  :host([effect="flip-vertical"][opened]) #content {
+    opacity: 1;
+  }
+
+  :host([effect="flip-vertical"][position="top"]) #content {
+    transform: translateX(-50%) rotateX(-70deg);
+  }
+
+  :host([effect="flip-vertical"][position="top"][opened]) #content {
+    transform: translateX(-50%) rotateX(0deg);
+  }
+
+  :host([effect="flip-vertical"][position="bottom"]) #content {
+    transform: translateX(-50%) rotateX(-70deg);
+  }
+
+  :host([effect="flip-vertical"][position="bottom"][opened]) #content {
+    transform: translateX(-50%) rotateX(0deg);
+  }
+
+  :host([effect="flip-vertical"][position="right"]) #content {
+    transform: translateY(-50%) rotateX(-70deg);
+  }
+
+  :host([effect="flip-vertical"][position="right"][opened]) #content {
+    transform: translateY(-50%) rotateX(0deg);
+  }
+
+  :host([effect="flip-vertical"][position="left"]) #content {
+    transform: translateY(-50%) rotateX(-70deg);
+  }
+
+  :host([effect="flip-vertical"][position="left"][opened]) #content {
+    transform: translateY(-50%) rotateX(0deg);
+  }
+`;
