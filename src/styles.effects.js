@@ -84,3 +84,52 @@ export const fadeInSlide = css`
     transform: translateY(-50%) translateX(0);
   }
 `;
+
+
+export const fall = css`
+  :host([effect="fall"]) {
+    perspective: 1300px;
+  }
+
+  :host([effect="fall"]) #content {
+    transform-style: preserve-3d;
+    opacity: 0;
+  }
+
+  :host([effect="fall"][opened]) #content {
+    transition: all var(--kemet-popover-transition-speed, 0.3s) ease-in;
+    opacity: 1;
+  }
+
+  :host([effect="fall"][position="top"]) #content {
+    transform: translateX(-50%) translateZ(600px) rotateX(20deg);
+  }
+
+  :host([effect="fall"][position="top"][opened]) #content {
+    transform: translateX(-50%) translateZ(0px) rotateX(0deg);
+  }
+
+  :host([effect="fall"][position="bottom"]) #content {
+    transform: translateX(-50%) translateZ(600px) rotateX(20deg);
+  }
+
+  :host([effect="fall"][position="bottom"][opened]) #content {
+    transform: translateX(-50%) translateZ(0px) rotateX(0deg);
+  }
+
+  :host([effect="fall"][position="right"]) #content {
+    transform: translateY(-50%) translateZ(600px) rotateX(20deg);
+  }
+
+  :host([effect="fall"][position="right"][opened]) #content {
+    transform: translateY(-50%) translateZ(0px) rotateX(0deg);
+  }
+
+  :host([effect="fall"][position="left"]) #content {
+    transform: translateY(-50%) translateZ(600px) rotateX(20deg);
+  }
+
+  :host([effect="fall"][position="left"][opened]) #content {
+    transform: translateY(-50%) translateZ(0px) rotateX(0deg);
+  }
+`;
