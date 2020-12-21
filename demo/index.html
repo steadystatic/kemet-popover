@@ -24,6 +24,11 @@
       --kemet-popover-width: 320px;
     }
 
+    /* note: be sure to add a gap if you're using a tooltip! */
+    kemet-popover[tooltip] {
+      --kemet-popover-gap: 1rem;
+    }
+
     a,
     kemet-popover strong {
       letter-spacing: 1px;
@@ -80,8 +85,8 @@
     const properties = {
       position: 'top',
       effect: 'fade-in-scale-up',
-      fireOnClick: true,
-      fireOnHover: false,
+      fireOnClick: false,
+      fireOnHover: true,
     };
 
     const demoElement = document.getElementById('demo');
@@ -101,10 +106,10 @@
       <p>
         <strong>Fire On:</strong>&nbsp;
         <label>
-          <input type="radio" name="fire-on" value="click" @change=${(event) => handleFireOn(event)} checked />Click
+          <input type="radio" name="fire-on" value="click" @change=${(event) => handleFireOn(event)} />Click
         </label>
         <label>
-          <input type="radio" name="fire-on" value="hover" @change=${(event) => handleFireOn(event)}  />Hover
+          <input type="radio" name="fire-on" value="hover" @change=${(event) => handleFireOn(event)} checked />Hover
         </label>
       </p>
       <hr />
@@ -119,6 +124,18 @@
           <span slot="content">This is a popover. Lets add some extra text in here and see what happens.</span>
         </kemet-popover>
         Bacon ipsum dolor amet tri-tip ball tip ground round, burgdoggen drumstick swine frankfurter salami alcatra doner chicken sausage. Tail andouille short ribs biltong picanha meatloaf porchetta. Corned beef fatback chuck landjaeger. Corned beef shoulder fatback pancetta, meatball t-bone andouille. Pork loin andouille leberkas shank tri-tip, capicola tenderloin ball tip pancetta. Kevin shoulder strip steak pork loin.
+      </p>
+      <p>
+        <kemet-popover
+          tooltip
+          ?fire-on-hover=${props.fireOnHover}
+          ?fire-on-click=${props.fireOnClick}
+          .effect="${props.effect}"
+          .position="${props.position}">
+          <strong slot="trigger">Activate Tooltip</strong>:
+          <span slot="content">This is a tooltip. Here's a <a href="http://kemet.online/popover" target="_blank">random link</a> to help test it out.</span>
+        </kemet-popover>
+        Ribeye pork jerky beef ribs, turkey sausage chicken pastrami chuck biltong leberkas corned beef sirloin short loin porchetta. Pastrami pig pork chop rump shank. Shoulder drumstick shankle, short loin pork loin jerky bacon turducken bresaola pancetta spare ribs. Short loin cow turducken picanha cupim, sausage filet mignon rump kevin.
       </p>
       <p>
         <kemet-popover
@@ -150,8 +167,10 @@
     const handleFireOn = (event) => {
       if (event.target.value === 'hover') {
         properties.fireOnHover = true;
+        properties.fireOnClick = false;
       } else {
         properties.fireOnClick = true;
+        properties.fireOnHover = false;
       }
 
       render(demoUI(properties), demoElement)

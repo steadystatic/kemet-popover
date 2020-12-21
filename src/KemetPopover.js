@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit-element';
-import { customTooltip } from './styles.tooltip.js';
+import { tooltip, customTooltip } from './styles.tooltip.js';
 import { fadeInScaleUp } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
@@ -65,6 +65,7 @@ export class KemetPopover extends LitElement {
           transform: translateY(-50%);
         }
       `,
+      tooltip,
       customTooltip,
       fadeInScaleUp
     ];
@@ -83,6 +84,9 @@ export class KemetPopover extends LitElement {
       position: {
         type: String,
         reflect: true
+      },
+      tooltip: {
+        type: Boolean,
       },
       customTooltip: {
         type: Boolean,
@@ -104,7 +108,12 @@ export class KemetPopover extends LitElement {
 
     // managed properties
     this.opened = false;
+    this.effect = null;
     this.position = 'top';
+    this.tooltip = false;
+    this.customTooltip = false;
+    this.fireOnClick = false;
+    this.fireOnHover = true;
 
     // standard properties
     this.keyCodes = {
@@ -174,6 +183,16 @@ export class KemetPopover extends LitElement {
       return html`
         <div id="custom-tooltip" part="custom-tooltip">
           <slot name="custom-tooltip"></slot>
+        </div>
+      `;
+    }
+
+    if (this.tooltip) {
+      return html`
+        <div id="tooltip" part="tooltip">
+          <svg width="29px" height="14px" enable-background="new 0 0 29 14" viewBox="0 0 29 14">
+            <polygon points="0.15,0 14.5,14.35 28.85,0 "/>
+          </svg>
         </div>
       `;
     }
