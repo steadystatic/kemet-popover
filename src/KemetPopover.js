@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit-element';
 import { tooltip, customTooltip } from './styles.tooltip.js';
-import { fadeInScaleUp } from './styles.effects.js';
+import { fadeIn, fadeInScaleUp, fadeInSlide } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
   static get styles() {
@@ -67,7 +67,9 @@ export class KemetPopover extends LitElement {
       `,
       tooltip,
       customTooltip,
-      fadeInScaleUp
+      fadeIn,
+      fadeInScaleUp,
+      fadeInSlide,
     ];
   }
 

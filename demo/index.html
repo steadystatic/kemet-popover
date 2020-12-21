@@ -84,7 +84,7 @@
 
     const properties = {
       position: 'top',
-      effect: 'fade-in-scale-up',
+      effect: 'fade-in',
       fireOnClick: false,
       fireOnHover: true,
     };
@@ -93,6 +93,16 @@
 
     const demoUI = (props) => html`
       <p>
+        <label>
+          <strong>Effect:</strong>&nbsp;&nbsp;
+          <select @blur=${(event) => handleEffect(event)}>
+            <option value="none">None</option>
+            <option value="fade-in" selected>Fade In</option>
+            <option value="fade-in-scale-up">Fade In Scale Up</option>
+            <option value="fade-in-slide">Fade In Slide</option>
+          </select>
+        </label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <label>
           <strong>Position:</strong>&nbsp;&nbsp;
           <select @blur=${(event) => handlePosition(event)}>
@@ -173,7 +183,17 @@
         properties.fireOnHover = false;
       }
 
-      render(demoUI(properties), demoElement)
+      render(demoUI(properties), demoElement);
+    }
+
+    const handleEffect = (event) => {
+      if (event.target.value === 'none') {
+        properties.effect = null;
+      } else {
+        properties.effect = event.target.value;
+      }
+
+      render(demoUI(properties), demoElement);
     }
   </script>
 </body>
