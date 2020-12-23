@@ -84,7 +84,7 @@
 
     const properties = {
       position: 'top',
-      effect: 'fade-in',
+      effect: 'fade',
       fireOnClick: false,
       fireOnHover: true,
     };
@@ -97,13 +97,14 @@
           <strong>Effect:</strong>&nbsp;&nbsp;
           <select @blur=${(event) => handleEffect(event)}>
             <option value="none">None</option>
-            <option value="fade-in" selected>Fade In</option>
-            <option value="fade-in-scale-up">Fade In Scale Up</option>
-            <option value="fade-in-slide">Fade In Slide</option>
+            <option value="fade" selected>Fade</option>
+            <option value="scale">Scale</option>
+            <option value="slide">Slide</option>
             <option value="fall">Fall</option>
             <option value="flip-horizontal">Flip Horizontal</option>
             <option value="flip-vertical">Flip Vertical</option>
             <option value="sign">Sign</option>
+            <option value="super-scaled">Super Scaled</option>
           </select>
         </label>
         &nbsp;&nbsp;&nbsp;&nbsp;

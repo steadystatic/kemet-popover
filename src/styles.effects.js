@@ -1,86 +1,86 @@
 import { css } from 'lit-element';
 
-export const fadeIn = css`
-  :host([effect="fade-in"]) #content {
+export const fade = css`
+  :host([effect="fade"]) #content {
     opacity: 0;
     transition: all var(--kemet-popover-transition-speed, 0.3s);
   }
 
-  :host([effect="fade-in"][opened]) #content {
+  :host([effect="fade"][opened]) #content {
     opacity: 1;
   }
 `;
 
-export const fadeInScaleUp = css`
-  :host([effect="fade-in-scale-up"]) #content {
+export const scale = css`
+  :host([effect="scale"]) #content {
     opacity: 0;
     transition: all var(--kemet-popover-transition-speed, 0.3s);
   }
 
-  :host([effect="fade-in-scale-up"][opened]) #content {
+  :host([effect="scale"][opened]) #content {
     opacity: 1;
   }
 
-  :host([effect="fade-in-scale-up"][position="top"]) #content,
-  :host([effect="fade-in-scale-up"][position="bottom"]) #content {
+  :host([effect="scale"][position="top"]) #content,
+  :host([effect="scale"][position="bottom"]) #content {
     transform: translateX(-50%) scale(0.7);
   }
 
-  :host([effect="fade-in-scale-up"][position="top"][opened]) #content,
-  :host([effect="fade-in-scale-up"][position="bottom"][opened]) #content {
+  :host([effect="scale"][position="top"][opened]) #content,
+  :host([effect="scale"][position="bottom"][opened]) #content {
     transform: translateX(-50%) scale(1);
   }
 
-  :host([effect="fade-in-scale-up"][position="left"]) #content,
-  :host([effect="fade-in-scale-up"][position="right"]) #content {
+  :host([effect="scale"][position="left"]) #content,
+  :host([effect="scale"][position="right"]) #content {
     transform: translateY(-50%) scale(0.7);
   }
 
-  :host([effect="fade-in-scale-up"][position="left"][opened]) #content,
-  :host([effect="fade-in-scale-up"][position="right"][opened]) #content {
+  :host([effect="scale"][position="left"][opened]) #content,
+  :host([effect="scale"][position="right"][opened]) #content {
     transform: translateY(-50%) scale(1);
   }
 `;
 
-export const fadeInSlide = css`
-  :host([effect="fade-in-slide"]) #content {
+export const slide = css`
+  :host([effect="slide"]) #content {
     opacity: 0;
     transition: all var(--kemet-popover-transition-speed, 0.3s) cubic-bezier(0.25, 0.5, 0.5, 0.9);
   }
 
-  :host([effect="fade-in-slide"][opened]) #content {
+  :host([effect="slide"][opened]) #content {
     opacity: 1;
   }
 
-  :host([effect="fade-in-slide"][position="top"]) #content {
+  :host([effect="slide"][position="top"]) #content {
     transform: translateX(-50%) translateY(20%);
   }
 
-  :host([effect="fade-in-slide"][position="top"][opened]) #content {
+  :host([effect="slide"][position="top"][opened]) #content {
     transform: translateX(-50%) translateY(0);
   }
 
-  :host([effect="fade-in-slide"][position="bottom"]) #content {
+  :host([effect="slide"][position="bottom"]) #content {
     transform: translateX(-50%) translateY(-20%);
   }
 
-  :host([effect="fade-in-slide"][position="bottom"][opened]) #content {
+  :host([effect="slide"][position="bottom"][opened]) #content {
     transform: translateX(-50%) translateY(0);
   }
 
-  :host([effect="fade-in-slide"][position="right"]) #content {
+  :host([effect="slide"][position="right"]) #content {
     transform: translateY(-50%) translateX(-20%);
   }
 
-  :host([effect="fade-in-slide"][position="right"][opened]) #content {
+  :host([effect="slide"][position="right"][opened]) #content {
     transform: translateY(-50%) translateX(0);
   }
 
-  :host([effect="fade-in-slide"][position="left"]) #content {
+  :host([effect="slide"][position="left"]) #content {
     transform: translateY(-50%) translateX(20%);
   }
 
-  :host([effect="fade-in-slide"][position="left"][opened]) #content {
+  :host([effect="slide"][position="left"][opened]) #content {
     transform: translateY(-50%) translateX(0);
   }
 `;
@@ -280,5 +280,36 @@ export const sign = css`
 
   :host([effect="sign"][position="left"][opened]) #content {
     transform: translateY(-50%) rotateY(0deg);
+  }
+`;
+
+export const superScaled = css`
+  :host([effect="super-scaled"]) #content {
+    opacity: 0;
+    transition: all var(--kemet-popover-transition-speed, 0.3s);
+  }
+
+  :host([effect="super-scaled"][opened]) #content {
+    opacity: 1;
+  }
+
+  :host([effect="super-scaled"][position="top"]) #content,
+  :host([effect="super-scaled"][position="bottom"]) #content {
+    transform: translateX(-50%) scale(2);
+  }
+
+  :host([effect="super-scaled"][position="top"][opened]) #content,
+  :host([effect="super-scaled"][position="bottom"][opened]) #content {
+    transform: translateX(-50%) scale(1);
+  }
+
+  :host([effect="super-scaled"][position="left"]) #content,
+  :host([effect="super-scaled"][position="right"]) #content {
+    transform: translateY(-50%) scale(2);
+  }
+
+  :host([effect="super-scaled"][position="left"][opened]) #content,
+  :host([effect="super-scaled"][position="right"][opened]) #content {
+    transform: translateY(-50%) scale(1);
   }
 `;

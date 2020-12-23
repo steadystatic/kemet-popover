@@ -1,13 +1,14 @@
 import { html, css, LitElement } from 'lit-element';
 import { tooltip, customTooltip } from './styles.tooltip.js';
 import {
-  fadeIn,
-  fadeInScaleUp,
-  fadeInSlide,
+  fade,
+  scale,
+  slide,
   fall,
   flipHorizontal,
   flipVertical,
   sign,
+  superScaled,
 } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
@@ -75,13 +76,14 @@ export class KemetPopover extends LitElement {
       `,
       tooltip,
       customTooltip,
-      fadeIn,
-      fadeInScaleUp,
-      fadeInSlide,
+      fade,
+      scale,
+      slide,
       fall,
       flipHorizontal,
       flipVertical,
       sign,
+      superScaled,
     ];
   }
 
