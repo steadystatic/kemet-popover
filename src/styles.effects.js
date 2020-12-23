@@ -230,3 +230,55 @@ export const flipVertical = css`
     transform: translateY(-50%) rotateX(0deg);
   }
 `;
+
+export const sign = css`
+  :host([effect="sign"]) {
+    perspective: 1300px;
+  }
+
+  :host([effect="sign"]) #content {
+    transform-style: preserve-3d;
+    transition: all var(--kemet-popover-transition-speed, 0.3s);
+    opacity: 0;
+  }
+
+  :host([effect="sign"][opened]) #content {
+    opacity: 1;
+  }
+
+  :host([effect="sign"][position="top"]) #content {
+    transform-origin: 0 100%;
+    transform: translateX(-50%) rotateX(90deg);
+  }
+
+  :host([effect="sign"][position="top"][opened]) #content {
+    transform: translateX(-50%) rotateX(0deg);
+  }
+
+  :host([effect="sign"][position="bottom"]) #content {
+    transform-origin: 100% 0;
+    transform: translateX(-50%) rotateX(90deg);
+  }
+
+  :host([effect="sign"][position="bottom"][opened]) #content {
+    transform: translateX(-50%) rotateX(0deg);
+  }
+
+  :host([effect="sign"][position="right"]) #content {
+    transform-origin: 0 100%;
+    transform: translateY(-50%) rotateY(90deg);
+  }
+
+  :host([effect="sign"][position="right"][opened]) #content {
+    transform: translateY(-50%) rotateY(0deg);
+  }
+
+  :host([effect="sign"][position="left"]) #content {
+    transform-origin: 100% 0;
+    transform: translateY(-50%) rotateY(90deg);
+  }
+
+  :host([effect="sign"][position="left"][opened]) #content {
+    transform: translateY(-50%) rotateY(0deg);
+  }
+`;

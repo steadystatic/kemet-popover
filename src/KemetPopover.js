@@ -7,6 +7,7 @@ import {
   fall,
   flipHorizontal,
   flipVertical,
+  sign,
 } from './styles.effects.js';
 
 export class KemetPopover extends LitElement {
@@ -80,6 +81,7 @@ export class KemetPopover extends LitElement {
       fall,
       flipHorizontal,
       flipVertical,
+      sign,
     ];
   }
 
