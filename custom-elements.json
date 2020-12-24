@@ -3,28 +3,131 @@
   "tags": [
     {
       "name": "kemet-popover",
-      "description": "A component with a title and an action counter",
+      "description": "Displays an element in position of a trigger. Also acts as a tooltip.",
       "properties": [
         {
-          "name": "title",
-          "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
+          "name": "opened",
+          "type": "Boolean",
+          "description": "Determines whether or not the popover displays.",
+          "default": false
         },
         {
-          "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
+          "name": "effect",
+          "type": "String",
+          "description": "The opening and closing effect of the popover. Is optional. Values include: (fade | scale | slide | fall | flip horizontal | flip vertical | sign | super scaled)",
+          "default": null
+        },
+        {
+          "name": "position",
+          "type": "String",
+          "description": "Determines the placement of the popover. Values include: (top | right | bottom | left)",
           "default": 0
+        },
+        {
+          "name": "tooltip",
+          "type": "Boolean",
+          "description": "Adds a build in tooltip to the popover.",
+          "default": false
+        },
+        {
+          "name": "custom-tooltip",
+          "type": "Boolean",
+          "description": "Adds a custom tooltip to the popover. Use the custom-tooltip slot to specify the custom tooltip.",
+          "default": false
+        },
+        {
+          "name": "fire-on-click",
+          "type": "Number",
+          "description": "Controls whether or not the tooltip triggers on click.",
+          "default": false
+        },
+        {
+          "name": "fire-on-hover",
+          "type": "Number",
+          "description": "Controls whether or not the tooltip triggers on hover",
+          "default": true
         }
       ],
-      "events": [],
-      "slots": [],
+      "events": [
+        {
+          "name": "kemet-popover-opened",
+          "description": "Fires when the popover opens."
+        },
+        {
+          "name": "kemet-popover-closed",
+          "description": "Fires when the popover closes."
+        }
+      ],
+      "slots": [
+        {
+          "name": "trigger",
+          "description": "Controls opening and closing the popover."
+        },
+        {
+          "name": "content",
+          "description": "The contents of the popover."
+        },
+        {
+          "name": "custom-tooltip",
+          "description": "Allows you to use an svg, image, custom css, etc for a custom tooltip."
+        }
+      ],
       "cssProperties": [
         {
-          "name": "--kemet-popover-text-color",
-          "description": "Main Text Color",
-          "type": "Color"
+          "name": "--kemet-popover-width",
+          "description": "The width of the popover contents.",
+          "type": "Dimension",
+          "default": "100%"
+        },
+        {
+          "name": "--kemet-popover-height",
+          "description": "The height of the popover contents.",
+          "type": "Dimension",
+          "default": "auto"
+        },
+        {
+          "name": "--kemet-popover-color",
+          "description": "The text color of the popover's contents.",
+          "type": "Color",
+          "default": "#fafafa"
+        },
+        {
+          "name": "--kemet-popover-bgcolor",
+          "description": "The background color of the popover's contents.",
+          "type": "Color",
+          "default": "rgba(36,49,56,1)"
+        },
+        {
+          "name": "--kemet-popover-gap",
+          "description": "The space between the trigger and content.",
+          "type": "Position",
+          "default": "0px"
+        },
+        {
+          "name": "--kemet-popover-transition-speed",
+          "description": "The speed of the opening and closing effect.",
+          "type": "Transition",
+          "default": "0.3s"
+        },
+        {
+          "name": "::part(trigger)",
+          "description": "Contains the trigger for the popover.",
+          "type": "Part"
+        },
+        {
+          "name": "::part(content)",
+          "description": "Contains the content for the popover.",
+          "type": "Part"
+        },
+        {
+          "name": "::part(tooltip)",
+          "description": "Contains the tooltip for the popover.",
+          "type": "Part"
+        },
+        {
+          "name": "::part(custom-tooltip)",
+          "description": "Contains the custom tooltip for the popover.",
+          "type": "Part"
         }
       ]
     }

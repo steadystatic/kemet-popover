@@ -1,0 +1,122 @@
+import { Story, Preview, Meta, Props } from '@open-wc/demoing-storybook';
+import { html, css } from 'lit-element';
+
+import '../kemet-popover.js';
+
+<Meta
+  title="KemetPopover"
+  parameters={{
+    component: "kemet-popover",
+    options: { selectedPanel: "storybookjs/knobs/panel" }
+  }}
+/>
+
+# KemetPopover
+
+Displays an element in position of a trigger. Also acts as a tooltip.
+
+
+## How to use
+
+### Installation
+
+```bash
+npm install @kemet/kemet-popover
+```
+
+```js
+import '@kemet/kemet-popover/kemet-popover.js';
+```
+
+### Basic Usage
+```html
+<kemet-popover>
+  <button slot="trigger">Popover Trigger</button>
+  <span slot="content">Your popover contents here. Supports HTML.</span>
+</kemet-popover>
+```
+
+
+## Previews
+
+<Preview withToolbar>
+  <Story name="Popover">
+    {html`
+      <div style="padding:4rem">
+        <kemet-popover effect="fade" position="right" style="--kemet-popover-width:200%">
+          <button slot="trigger">Popover Trigger</button>
+          <span slot="content">Your popover contents here. Supports HTML.</span>
+        </kemet-popover>
+      </div>
+    `}
+  </Story>
+</Preview>
+
+<Preview withToolbar>
+  <Story name="Tooltip">
+    {html`
+      <div style="padding:4rem">
+        <kemet-popover tooltip effect="slide" style="--kemet-popover-width:200%; --kemet-popover-gap:1rem;">
+          <button slot="trigger">Tooltip Trigger</button>
+          <span slot="content">Your tooltip contents here. Supports HTML.</span>
+        </kemet-popover>
+      </div>
+    `}
+  </Story>
+</Preview>
+
+<Preview withToolbar>
+  <Story name="Custom Tooltip">
+    {html`
+      <style>
+        [custom-tooltip] {
+          --kemet-popover-width: 200%;
+          --kemet-popover-gap: 1rem;
+        }
+        [custom-tooltip] [slot="content"] {
+          color: rgba(36,49,56,1);
+          background-color: #fafafa;
+          border: 3px solid rgba(36,49,56,1);
+        }
+        [custom-tooltip][position="top"] svg,
+        [custom-tooltip][position="bottom"] svg,
+        [custom-tooltip][position="left"] svg,
+        [custom-tooltip][position="right"] svg {
+          position: relative;
+        }
+        [custom-tooltip][position="top"] svg {
+          top: -3px;
+        }
+        [custom-tooltip][position="right"] svg {
+          right: -10px;
+          transform: rotate(90deg);
+        }
+        [custom-tooltip][position="bottom"] svg {
+          top: 3px;
+          transform: rotate(180deg);
+        }
+        [custom-tooltip][position="left"] svg {
+          transform: rotate(270deg);
+          right: 10px;
+        }
+      </style>
+      <div style="padding:6rem">
+        <kemet-popover custom-tooltip effect="sign">
+          <button slot="trigger">Custom Tooltip Trigger</button>
+          <span slot="content">Your tooltip contents here. Supports HTML.</span>
+          <span slot="custom-tooltip">
+            <svg width="32" height="18" viewBox="0 0 1366.99 767.67">
+              <polyline points="0.74 0.67 685.25 766.17 1366.24 0.67" style="fill:#fafafa; stroke:rgba(36,49,56,1); stroke-width:100px"/>
+            </svg>
+          </span>
+        </kemet-popover>
+      </div>
+    `}
+  </Story>
+</Preview>
+
+
+## API
+
+### KemetPopover
+<Props of="kemet-popover" />

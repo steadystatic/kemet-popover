@@ -20,10 +20,6 @@
       max-width: 640px;
     }
 
-    kemet-popover {
-      --kemet-popover-width: 320px;
-    }
-
     /* note: be sure to add a gap if you're using a tooltip! */
     kemet-popover[tooltip] {
       --kemet-popover-gap: 1rem;
@@ -36,39 +32,48 @@
       text-transform: uppercase;
     }
 
-    /* note: you are responsible for transforming the position and rotation of your custom tooltip */
-    .custom {
+    @media only screen and (min-width: 640px) {
+      kemet-popover {
+        --kemet-popover-width: 200%;
+      }
+    }
+
+    /*
+     * note: you are responsible for transforming the position and rotation of your custom tooltip
+     * these styles have been added to demonstrate how to go about doing this
+     */
+    [custom-tooltip] {
       --kemet-popover-gap: 1rem;
     }
 
-    .custom [slot="content"] {
+    [custom-tooltip] [slot="content"] {
       color: rgba(36,49,56,1);
       background-color: #fafafa;
       border: 3px solid rgba(36,49,56,1);
     }
 
-    .custom[position="top"] svg,
-    .custom[position="bottom"] svg,
-    .custom[position="left"] svg,
-    .custom[position="right"] svg {
+    [custom-tooltip][position="top"] svg,
+    [custom-tooltip][position="bottom"] svg,
+    [custom-tooltip][position="left"] svg,
+    [custom-tooltip][position="right"] svg {
       position: relative;
     }
 
-    .custom[position="top"] svg {
+    [custom-tooltip][position="top"] svg {
       top: -3px;
     }
 
-    .custom[position="right"] svg {
+    [custom-tooltip][position="right"] svg {
       right: -10px;
       transform: rotate(90deg);
     }
 
-    .custom[position="bottom"] svg {
+    [custom-tooltip][position="bottom"] svg {
       top: 3px;
       transform: rotate(180deg);
     }
 
-    .custom[position="left"] svg {
+    [custom-tooltip][position="left"] svg {
       transform: rotate(270deg);
       right: 10px;
     }
@@ -154,7 +159,6 @@
       </p>
       <p>
         <kemet-popover
-          class="custom"
           custom-tooltip
           ?fire-on-hover=${props.fireOnHover}
           ?fire-on-click=${props.fireOnClick}
