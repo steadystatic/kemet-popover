@@ -47,7 +47,7 @@ export class KemetPopover extends LitElement {
           width: 100%;
           padding: 1rem;
           box-sizing: border-box;
-          background-color: var(--kemet-popover-bgcolor, rgba(36,49,56,1));
+          background-color: var(--kemet-popover-bgcolor, #202020);
         }
 
         :host([position="top"]) #content {

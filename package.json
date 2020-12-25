@@ -1,6 +1,6 @@
 {
   "name": "@kemet/kemet-popover",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays an element in position of a trigger. Also acts as a tooltip.",
   "author": "Hasani Rogers <hasani.rogers@gmail.com>",
   "license": "MIT",

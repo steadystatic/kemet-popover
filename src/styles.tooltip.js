@@ -7,7 +7,7 @@ export const tooltip = css`
   }
 
   #tooltip polygon {
-    fill: var(--kemet-popover-bgcolor, rgba(36,49,56,1));
+    fill: var(--kemet-popover-bgcolor, #202020);
   }
 
   :host([position="top"]) #tooltip {

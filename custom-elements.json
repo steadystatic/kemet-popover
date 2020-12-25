@@ -21,7 +21,7 @@
           "name": "position",
           "type": "String",
           "description": "Determines the placement of the popover. Values include: (top | right | bottom | left)",
-          "default": 0
+          "default": "top"
         },
         {
           "name": "tooltip",
@@ -30,21 +30,21 @@
           "default": false
         },
         {
-          "name": "custom-tooltip",
+          "name": "customTooltip",
           "type": "Boolean",
           "description": "Adds a custom tooltip to the popover. Use the custom-tooltip slot to specify the custom tooltip.",
           "default": false
         },
         {
-          "name": "fire-on-click",
-          "type": "Number",
+          "name": "fireOnClick",
+          "type": "Boolean",
           "description": "Controls whether or not the tooltip triggers on click.",
           "default": false
         },
         {
-          "name": "fire-on-hover",
-          "type": "Number",
-          "description": "Controls whether or not the tooltip triggers on hover",
+          "name": "fireOnHover",
+          "type": "Boolean",
+          "description": "Controls whether or not the tooltip triggers on hover.",
           "default": true
         }
       ],
